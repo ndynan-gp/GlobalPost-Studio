@@ -4,6 +4,8 @@ This project is an Angular.js integration of One Page Scroll - https://github.co
 It also includes a gallery built with Sly.js avaliable on mobile sizes.  
 It is built on the Yeoman Angular Generator.
 
+A live version of the site is located here -> globalpost.com/gp-studio
+
 Install
 ==============
 
