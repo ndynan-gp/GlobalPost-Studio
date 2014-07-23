@@ -1,6 +1,8 @@
-gp-studio-dist
+GlobalPost Studio
 ==============
-This project is an Angular.js integration of One Page Scroll - https://github.com/peachananr/onepage-scroll. It also includes a gallery built with Sly.js avaliable on mobile sizes.  It is built on the Yeoman Angular Generator.
+This project is an Angular.js integration of One Page Scroll - https://github.com/peachananr/onepage-scroll. 
+It also includes a gallery built with Sly.js avaliable on mobile sizes.  
+It is built on the Yeoman Angular Generator.
 
 Install
 ==============
