@@ -1,0 +1,27 @@
+
+/////  Colors /////
+
+$white : rgba(240,240,240, 1);
+$darkGrey : rgba(44,44,44, 1);
+$lightGrey : rgba(55,55,55, 1);
+$lighterGrey : rgba(100,100,100, 1);
+
+$red: rgba(250,55,55,1);
+$lightRedOpacity: rgba(250,73,73,.5);
+
+$lightRed: rgba(250,73,73,1);
+$blue: #7FB0C8;
+$darkBlue: lighten(#1485CC,20%);
+
+
+/////  Media Query Breakpoints /////
+$gp-phone: max-width 767px;
+
+$gp-tablet-portrait: 768px;
+$gp-tablet-only: 768px 1024px;
+$gp-tablet-max: max-width 1024px;
+
+$gp-desktop-small: 1025px;
+$gp-desktop-medium: 1281px;
+$gp-desktop-large: 1480px;
+$gp-desktop-largest: 1600px;

@@ -1,0 +1,562 @@
+///// -------------------------- GlobalPost Logo - Module -------------------------- /////
+$postRed: darken(rgba(230, 33, 0, 1), 5%);
+$menu: rgba(36, 36, 36, 1);
+$swooshBlue: rgba(69, 125, 222, 1);
+
+.header_logo {
+    @include gpLogo;
+    font-size: 32px;
+    font-size: 3.2rem;
+    line-height: 1.55em;
+    margin-right: 3px;
+    margin-bottom: -15px;
+    @include breakpoint($gp-tablet-portrait) {
+        font-size: 70px;
+        font-size: 7rem;
+        line-height: 1.55em;
+        margin-right: 10px;
+        margin-bottom: -15px;
+    }
+
+    @include breakpoint($gp-desktop-large) {
+        font-size: 110px;
+        font-size: 11rem;
+        line-height: 1.55em;
+        margin-right: 15px;
+        margin-bottom: -10px;
+    }
+}
+
+.header_logo-global {
+    &:before {
+        content: "+";
+    }
+}
+
+///// -------------------------- GPS Sections -------------------------- /////
+
+
+html {
+    font-size: 62.5%;
+}
+
+.gps_section--hero {
+    @include defaultHeight;
+    &:before {
+        content: '';
+        @include absoluteFull;
+        @include background-image(linear-gradient(lighten($darkGrey, 60%), lighten($darkGrey, 10%)));
+        opacity: .6;
+    }
+    &:after {
+        content: '';
+        @include absoluteFull;
+        background: transparent url("../videos/hero.jpg") center center fixed;
+        @include background-size(cover);
+        z-index: -100000;
+    }
+}
+
+.gps_section--info {
+    background: $lightRed;
+    @include defaultHeight;
+    // @include openTransition('right');
+}
+
+.gps_section--video {
+    background: $blue;
+    @include defaultHeight;
+}
+
+.gps_section--contact {
+    background: #E870FF;
+    @include defaultHeight;
+}
+
+///// -------------------------- GPS Section Inner -------------------------- /////
+
+.gps_section-inner {
+    @include v-align(50%);
+    margin: auto;
+    width: 84%;
+    @include container;
+    z-index: 1000;
+    text-align: center;
+    padding-right: 10px;
+    @include transition(opacity 400ms ease-out 600ms);
+    opacity: 0;
+    [class*="gps_section--"].active & {
+        opacity: 1;
+    }
+    @include breakpoint($gp-desktop-small) {
+        width: 65%;
+        text-align: left;
+        padding-right: 0;
+    }
+}
+
+.gps_section-inner--main {
+    @include span(6 of 10);
+    .gps_section--info.active & {
+        //@include animation(700ms, 1000ms, fadeIn);
+
+    }
+}
+
+.gps_section-inner--aside {
+    @include span(4 of 10 omega);
+    @include clearfix;
+    margin-top: 20px;
+}
+
+.gps_section-header {
+    color: $white;
+    font-family: "MuseoSans-300";
+    font-size: 30px;
+    font-size: 3rem;
+    line-height: 1.3em;
+    margin-bottom: 10px;
+    @include breakpoint($gp-tablet-portrait) {
+        font-family: "MuseoSans-100";
+        font-size: 40px;
+        font-size: 4rem;
+        line-height: 1.5em;
+    }
+
+    @include breakpoint($gp-desktop-medium) {
+        font-family: "MuseoSans-100";
+        font-size: 40px;
+        font-size: 4rem;
+        line-height: 1.4em;
+    }
+
+    @include breakpoint($gp-desktop-large) {
+        font-family: "MuseoSans-100";
+        font-size: 60px;
+        font-size: 6rem;
+        line-height: 1.4em;
+        margin-bottom: 0;
+    }
+}
+
+.gps_section-body {
+    @include columns(20em 1);
+    color: $white;
+    font-family: "MuseoSans-300";
+    font-size: 17px;
+    font-size: 1.7rem;
+    line-height: 1.5em;
+    @include breakpoint($gp-desktop-small) {
+        font-size: 20px;
+        font-size: 2rem;
+        line-height: 1.6em;
+    }
+
+    b {
+        font-size: 30px;
+        font-size: 3rem;
+        line-height: 1.6em;
+    }
+    p {
+        margin-bottom: 10px;
+        @include breakpoint($gp-desktop-small) {
+            margin-bottom: 25px;
+        }
+    }
+}
+
+///// -------------------------- GPS Hero -------------------------- /////
+
+.gps_hero {
+    color: $white;
+    z-index: 100;
+}
+
+.gps_hero-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100vh;
+    width: auto;
+    height: auto;
+    z-index: -1000;
+}
+
+.gps_hero-headline-wrapper {
+    @include animation(700ms, 1000ms, slideInDown);
+}
+
+.gps_hero-headline {
+    display: inline-block;
+    font-family: "MuseoSans-300";
+    font-size: 30px;
+    font-size: 3rem;
+    line-height: 1.6em;
+    @include breakpoint($gp-tablet-portrait) {
+        font-family: "MuseoSans-100";
+        font-size: 70px;
+        font-size: 7rem;
+        line-height: 1.5em;
+    }
+
+    @include breakpoint($gp-desktop-large) {
+        font-family: "MuseoSans-100";
+        font-size: 100px;
+        font-size: 10rem;
+        line-height: 1.3em;
+    }
+}
+
+.gps_hero-subhead {
+    @include animation(700ms, 1000ms, slideInUp);
+    color: $white;
+    padding-left: .2em;
+    font-family: "MuseoSans-300";
+    font-size: 17px;
+    font-size: 1.7rem;
+    line-height: 1.4em;
+    @include breakpoint($gp-desktop-small) {
+        font-size: 40px;
+        font-size: 4rem;
+        line-height: 1.4em;
+        font-family: "MuseoSans-100";
+        @include span(8 of 10);
+    }
+}
+///// -------------------------- GPS Down Arrow -------------------------- /////
+
+$buttonSize: 70px;
+$buttonWeight: 2px;
+
+@mixin arrowInnerColor {
+    border-color: $white;
+    body.viewing-page-1 & {
+        border-color: #444;
+    }
+    body.viewing-page-2 & {
+        border-color: $blue;
+    }
+    body.viewing-page-3 & {
+        border-color: $lightRed;
+    }
+}
+
+.gps_arrow {
+    @include animation(0ms, 1000ms, fadeIn);
+    @include transition(box-shadow 200ms ease-in);
+    z-index: 1000;
+    width: $buttonSize / 1.5;
+    height: $buttonSize / 1.5;
+    background: none;
+    border: $buttonWeight / 1.5 solid white;
+    @include border-radius($buttonSize / 3);
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -$buttonSize / 3;
+    cursor: pointer;
+    &:active {
+        box-shadow: inset 0 0 0 $buttonSize / 3 $white;
+        .gps_arrow-inner {
+            @include arrowInnerColor;
+        }
+    }
+    body.hide_arrow & {
+        @include animation(300ms, 1000ms, fadeOut);
+    }
+
+    @include breakpoint($gp-desktop-small) {
+        bottom: 40px;
+        width: $buttonSize;
+        height: $buttonSize;
+        @include border-radius($buttonSize / 2);
+        margin-left: -$buttonSize / 2;
+        border: $buttonWeight solid white;
+        &:hover {
+            box-shadow: inset 0 0 0 $buttonSize / 2 $white;
+            .gps_arrow-inner {
+                @include arrowInnerColor;
+            }
+        }
+    }
+}
+
+.gps_arrow-inner {
+    @include transition(border-color 200ms ease-out);
+    width: $buttonSize / 3.5;
+    height: $buttonSize / 3.5;
+    margin: $buttonSize / 9 auto 0 auto;
+    border-left: $buttonWeight / 1.5 solid $white;
+    border-bottom: $buttonWeight / 1.5 solid $white;
+    @include transform(rotate(-45deg));
+    @include breakpoint($gp-desktop-small) {
+        width: $buttonSize / 2.5;
+        height: $buttonSize / 2.5;
+        margin: $buttonSize / 6 auto 0 auto;
+        border-left: $buttonWeight solid $white;
+        border-bottom: $buttonWeight solid $white;
+    }
+}
+///// -------------------------- GPS Video Grid -------------------------- /////
+
+.gps_video_grid {
+    margin: 10px -5px 0 -5px;
+    @include clearfix;
+    display: none;
+    @include breakpoint($gp-desktop-small) {
+        margin: 0;
+        display: block;
+        margin-top: 25px 0 0 0;
+    }
+}
+
+.gps_video_grid-item-link {
+    @include background-size(cover);
+    width: 100%;
+    padding-bottom: 58%;
+    height: 0;
+    display: block;
+    position: relative;
+}
+
+.gps_video_grid-item {
+    @include with-layout(16 0) {
+        overflow: hidden;
+        cursor: pointer;
+        position: relative;
+        margin-bottom: 0;
+    }
+
+    @include breakpoint($gp-desktop-small) {
+        @include with-layout(16 1 / 5) {
+            @include span(3 of 9);
+            margin-bottom: 1.8867%;
+            &:nth-child(3n) {
+                @include span(3 of 9 omega);
+            }
+        }
+    }
+}
+
+.gps_video_grid-item-summary {
+    display: none;
+    @include breakpoint($gp-desktop-small) {
+        font-family: "MuseoSans-300";
+        margin-top: 20px;
+        font-size: 15px;
+        font-size: 1.5rem;
+        line-height: 1.5em;
+        display: block;
+        color: $white;
+    }
+}
+
+.gps_video_grid-item-cover {
+    @include background-size(cover);
+    width: 100%;
+    padding-bottom: 9 / 16 * 100%;
+    height: 0;
+    display: block;
+    position: relative;
+    iframe {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        .gps_video_grid-item--mobile.active & {
+            display: block;
+        }
+    }
+}
+
+.gps_video-preview {
+    display: block;
+    @include background-size(cover);
+    width: 100%;
+    padding-bottom: 9 / 16 * 100%;
+    height: 0;
+    margin-bottom: -3px;
+    @include breakpoint($gp-desktop-small) {
+        margin-bottom: 0;
+        padding-bottom: 58%;
+    }
+}
+///// -------------------------- GPS Video Grid - Mobile Sly Slider -------------------------- /////
+
+.gps_video_grid--mobile {
+    width: 75%;
+    text-align: center;
+    margin: 10px auto;
+    @include clearfix;
+    display: block;
+    @include breakpoint($gp-desktop-small) {
+        display: none;
+    }
+}
+
+$slideNumber: 3;
+
+.gps_video_grid--mobile-inner {
+    list-style: none;
+    margin: 0;
+    @include clearfix;
+    width: 100% * $slideNumber;
+}
+
+.gps_video_grid-item--mobile {
+    float: left;
+    width: 100% / $slideNumber;
+    text-align: center;
+    @include clearfix;
+    position: relative;
+}
+
+.gps_video_grid--mobile-wrapper {
+    position: relative;
+}
+
+.gps_prev,
+.gps_next {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    &.disabled {
+        display: none;
+    }
+    @include breakpoint($gp-desktop-small) {
+        display: none;
+    }
+}
+
+.gps_prev {
+    left: -5px;
+    border-left: 2px solid $white;
+    border-bottom: 2px solid $white;
+    @include transform(rotate(45deg));
+}
+
+.gps_next {
+    right: -5px;
+    border-right: 2px solid $white;
+    border-bottom: 2px solid $white;
+    @include transform(rotate(-45deg));
+}
+
+///// -------------------------- GPS Player Content Area -------------------------- /////
+
+.gps_video-content {
+    @include absoluteFull;
+    z-index: 100;
+}
+
+.gps_video-content-inner {
+    @include v-align(45%);
+    position: absolute;
+    width: 100%;
+}
+
+.gps_video-content-player {
+    width: 100%;
+    position: relative;
+    height: 0;
+    padding-top: 9 / 16 * 100%;
+    margin: auto;
+}
+
+.gps_video-content-player-inner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.gps_video-content-info {
+    padding: 20px 30px;
+    position: relative;
+    width: 100%;
+    font-family: "MuseoSans-300";
+    font-size: 1vw;
+    line-height: 1.3em;
+    color: #555;
+    background: lighten(rgba(126, 167, 199, 1), 20%);
+}
+
+///// -------------------------- GPS Video Close Button -------------------------- /////
+
+$closeSize: 26px;
+
+.gps_video-content-close {
+    border: 2px solid $white;
+    @include border-radius($closeSize);
+    height: $closeSize * 2;
+    width: $closeSize * 2;
+    right: 20px;
+    top: 20px;
+    position: absolute;
+    cursor: pointer;
+    @include transition(border-color 200ms ease-out, box-shadow 200ms ease-in);
+    z-index: 100000000;
+    &:hover {
+        //border-color: $white;
+        box-shadow: inset 0 0 0 $buttonSize / 2 $white;
+        &:before,
+        &:after {
+            background: $blue;
+        }
+    }
+    &:before,
+    &:after {
+        background: $white;
+        content: '';
+        display: block;
+        width: $closeSize;
+        height: $closeSize / 15;
+        position: absolute;
+        top: 50%;
+        left: 25%;
+    }
+    &:before {
+        @include transform(rotate(-45deg));
+    }
+    &:after {
+        @include transform(rotate(45deg));
+    }
+}
+
+///// -------------------------- GPS Contact Section -------------------------- /////
+
+.gps_section-contact-list {
+    margin-top: 20px;
+    @include breakpoint($gp-desktop-small) {
+        float: left;
+        margin-top: 0;
+        margin-right: 50px;
+    }
+}
+
+.gps_section-contact-list-item {
+    font-family: "MuseoSans-300";
+    color: $white;
+    font-size: 16px;
+    font-size: 1.6rem;
+    line-height: 1.2em;
+    margin-bottom: .5em;
+    @include breakpoint($gp-desktop-small) {
+        font-family: "MuseoSans-300";
+        font-size: 20px;
+        font-size: 2rem;
+        margin-bottom: 0;
+        line-height: 1.6em;
+    }
+
+    &.contact_list-bold {
+        font-family: "MuseoSans-700";
+    }
+}

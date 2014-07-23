@@ -1,0 +1,323 @@
+.nowrap {
+  white-space: nowrap;
+}
+
+@mixin absoluteFull {
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:100%;
+}
+@mixin defaultHeight {
+  height: 100vh;
+  overflow:hidden;
+  position:relative;
+}
+
+$colorBegin: rgba(250,250,250,.3);
+$colorEnd: rgba(250,250,250,.05);
+
+@function get-dir($slant) {
+  @if $slant == "left" {
+    @return -1;
+  }
+  @else {
+    @return 1;
+  }
+}
+
+@mixin openTransition($slant: right) {
+
+    &:before,
+    &:after {
+        @include transform(translateX(0));
+        @include transition(all 700ms 700ms ease-in-out);
+        // @include transition(border 500ms 700ms ease-in-out);
+        content:'';
+        position:absolute;
+        height:0;
+        width:0;
+        bottom:0;
+        border:0 solid transparent;
+        z-index: 10;
+      }
+      &:before {
+        border-top: 100vh solid $colorBegin;
+        border-#{$slant}: 100vw solid transparent;
+      }
+      &:after {
+        border-top: 100vh solid transparent;
+        border-#{$slant}: 100vw solid $colorBegin;
+      }
+
+      &.active {
+          &:before {
+            @include transform(translateX(-100vw * get-dir($slant)));
+            border-top-color:$colorEnd;
+
+          }
+          &:after {
+            @include transform(translateX(100vw * get-dir($slant)));
+            border-bottom-color: $colorEnd;
+          }
+
+      }
+}
+
+
+@mixin clearfix {
+   &:after {
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+    content: ".";
+    line-height: 0;
+  }
+}
+
+
+/// Margining and Padding Global Classes ///
+@mixin paddless {padding: 0 !important;}
+@mixin marginless {margin: 0 !important;}
+
+///// -------------------------- Header Button -------------------------- /////
+
+@mixin headerButton {
+      @include user-select(none);
+      @include transition(background 100ms ease-out);
+      display: inline-block;
+      padding: 0px $header_button_padding;
+      height: 100%;
+      color: $lightBackground;
+      cursor: pointer;
+
+      @include breakpoint($gp-desktop-small) {
+          &:hover {
+              color: #fff;
+          }
+      }
+
+      &.active {
+          color: #fff;
+      }
+
+}
+
+///// -------------------------- GP ICONS -------------------------- /////
+
+@mixin gpIcon($color:inherit, $valign: middle) {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    text-transform: none;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-family: 'icomoon';
+    cursor: pointer;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: $color;
+    vertical-align: $valign;
+    @content
+};
+
+///// -------------------------- GP LOGO -------------------------- /////
+
+@mixin gpLogo {
+  display: inline-block;
+  color: $white;
+  font-size: 1em;
+  line-height: 1em;
+  text-decoration: none;
+  font-weight: normal;
+  font-family: "globalpost_logosregular";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+///// -------------------------- Columns Mixin -------------------------- /////
+
+@mixin css-columns($column-count: 2, $column-gap: 2em) {
+    -webkit-column-count: $column-count;
+    -moz-column-count: $column-count;
+    column-count: $column-count;
+    -webkit-column-gap: $column-gap;
+    -moz-column-gap: $column-gap;
+    column-gap: $column-gap;
+}
+
+///// -------------------------- Fade In/Out Animations -------------------------- /////
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+
+@include keyframes(fadeOutTwo) {
+    0% {
+        display: block;
+        opacity: 1;
+    }
+    99% {
+        display: block;
+        opacity: 0;
+    }
+    100% {
+        display: none;
+    }
+}
+
+@include keyframes(fadeInTwo) {
+    0% {
+        display: none;
+        visibility:hidden;
+        // you can also use mixins inside this mixin!
+    }
+    1% {
+        display: block;
+        visibility:visible;
+        // you can also use mixins inside this mixin!
+        opacity: 0;
+    }
+    100% {
+        display: block;
+        opacity: 1;
+        visibility:visible;
+    }
+}
+
+@include keyframes(fadeOut) {
+    0% {
+        z-index: 10001;
+        display: block;
+        opacity: 1;
+    }
+    99% {
+        z-index: 1;
+        display: block;
+        opacity: 0;
+    }
+    100% {
+        z-index: 0;
+        display: none;
+        opacity: 0;
+        visibility:hidden;
+    }
+}
+
+
+@include keyframes(fadeIn) {
+    0% {
+        display: none;
+        // you can also use mixins inside this mixin!
+        opacity: 0;
+    }
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+
+@include keyframes(slideInUp) {
+    0% {
+        display: block;
+        // you can also use mixins inside this mixin!
+        opacity: 0;
+        @include transform(translateY(2rem));
+
+    }
+    100% {
+        @include transform(translateY(0));
+        display: block;
+        opacity: 1;
+    }
+}
+
+@include keyframes(slideInDown) {
+    0% {
+        // you can also use mixins inside this mixin!
+        opacity: 0;
+        @include transform(translateY(-2rem));
+
+    }
+    1% {
+        // you can also use mixins inside this mixin!
+        opacity: 0;
+        @include transform(translateY(-2rem));
+
+    }
+    100% {
+        @include transform(translateY(0));
+        opacity: 1;
+    }
+}
+
+
+
+
+@mixin animation($delay, $duration, $animation) {
+    -webkit-animation-name: $animation;
+    -moz-animation-name: $animation;
+    -o-animation-name: $animation;
+    animation-name: $animation;
+    -webkit-animation-duration: $duration;
+    -moz-animation-duration: $duration;
+    -o-animation-duration: $duration;
+    animation-duration: $duration;
+    -webkit-animation-delay: $delay;
+    /* this prevents the animation from restarting! */
+    -moz-animation-delay: $delay;
+    /* this prevents the animation from restarting! */
+    -o-animation-delay: $delay;
+    /* this prevents the animation from restarting! */
+    animation-delay: $delay;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    /* this prevents the animation from restarting! */
+}
+
+.show {
+    @include animation(0ms, 1500ms, fadeIn);
+}
+
+.hidden {
+    @include animation(0ms, 1000ms, fadeOut);
+    z-index: 10;
+}
+
+
+/////// ----- Vertical Positioning ----- ////
+
+
+@mixin v-align($ammount:50%) {
+    @include transform(translateY(-($ammount)));
+    position: relative;
+    top: $ammount;
+}
+
+@mixin h-align($ammount:50%) {
+    left: $ammount;
+    margin-left: -($ammount);
+}
+
